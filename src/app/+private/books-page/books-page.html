@@ -1,1 +1,87 @@
-<p>books-page works!</p>
+@if(state=='list'){
+<button (click)="add()" class="primary">افزودن</button>
+<table>
+      <thead>
+            <tr>
+                  <th>شناسه</th>
+                  <th>عنوان</th>
+                  <th>نویسنده</th>
+                  <th>ناشر</th>
+                  <th>قیمت</th>
+                  <th></th>
+            </tr>
+      </thead>
+      <tbody>
+      @for (item of data;track $index) {
+      <!-- track $index
+      برای اینکه بگه صفت کلیدی این حلقه چیه -->
+      <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.writer}}</td>
+            <td>{{item.publisher}}</td>
+            <td>{{item.price}}</td>
+            <td>
+                  <button class="primary">ویرایش</button>
+                  <button class="primary">حذف</button>
+            </td>
+      </tr>
+      }
+
+      <!-- <tr>
+      <td>کیمیاگر</td>
+      <td>پائولو</td>
+      <td>انتشاراتی مجید</td>
+      <td>190000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr>
+    <tr>
+      <td>نشخوار ذهنی</td>
+      <td>ایتن کراس</td>
+      <td>سراج بوک</td>
+      <td>1700000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr>
+    <tr>
+      <td>دختر پرتغالی</td>
+      <td>یوستین</td>
+      <td>یوشیتا</td>
+      <td>2200000</td>
+      <td>
+            <button class="primary">ویرایش</button>
+            <button class="primary">حذف</button>
+      </td>
+    </tr> -->
+      </tbody>
+</table>
+}
+
+@else {
+<form (ngSubmit)="save()">
+      <div>
+            <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+      </div>
+      <div>
+            <input [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
+      </div>
+      <div>
+            <input [(ngModel)]="item.writer" id="writer" name="writer" type="text" placeholder="نویسنده">
+      </div>
+      <div>
+            <input [(ngModel)]="item.publisher" id="publisher" name="publisher" type="text" placeholder="ناشر">
+      </div>
+      <div>
+            <input [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
+      </div>
+      <div>
+            <button class="primary" type="submit">تایید</button>
+            <button (click)="cancel()" class="primary" type="button">انصراف</button>
+      </div>
+</form>
+}
