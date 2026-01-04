@@ -1,2 +1,11 @@
-<p>private-template works!</p>
-<router-outlet></router-outlet>
+<div class="sidebar">
+      <a routerLink="dashbord">داشبورد</a>
+      <a routerLink="books">کتاب‌ها</a>
+      <a routerLink="members">اعضا</a>
+      <a routerLink="borrows">امانات</a>
+      <a routerLink="report">گزارشات</a>
+      <a (click)="logoff()">خروج</a>
+</div>
+<div class="content">
+      <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,22 @@
+.sidebar {
+  background-color: black;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  a {
+    display: block;
+    color: white;
+    padding: 0.2em 0.5em;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a::before {
+    content: '✅';
+  }
+}
+.content {
+  margin-right: 200px;
+  padding: 4em;
+}
