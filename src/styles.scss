@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+background-color: rgb(235, 235, 235);
+margin: 0;
+}
+@font-face {
+      font-family: persian;
+      src: url('/public/fonts/persian2.woff');
+}
+*{
+      font-family: persian;
+}
