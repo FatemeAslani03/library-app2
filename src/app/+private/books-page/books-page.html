@@ -22,8 +22,8 @@
             <td>{{item.publisher}}</td>
             <td>{{item.price}}</td>
             <td>
-                  <button class="primary">ویرایش</button>
-                  <button class="primary">حذف</button>
+                  <button (click)="edit(item)" class="primary">ویرایش</button>
+                  <button (click)="remove(item)" class="primary">حذف</button>
             </td>
       </tr>
       }
@@ -63,21 +63,33 @@
 }
 
 @else {
+@if(state=='remove'){
+      <div class="alert">
+            آیا از حذف این کتاب مطمئن هستید؟
+      </div>
+      }
 <form (ngSubmit)="save()">
+      @if(state!='edit'){
+ <!-- یا میتوان به جای دستور اگر از کد زیر استفاده کرد
+<input [disabled]="state=='edit' " [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+ یا میتوان در استایل دهی کلاسی به نام غیب تعریف کرد و شرطی برای بخش مورد نظر اعمال کرد
+<div [class.gheyb]="state=='edit'"></div>
+یا میتونیم فعال بودن دریافت غیرفعال و با استایل دهی کلاسی برای قفل بودن ان اعمال کرد مثلا رنگ بک گراند ان تغییر کند -->
       <div>
-            <input [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+      <input [disabled]="state=='remove'" [(ngModel)]="item.id" id="id" name="id" type="number" placeholder="شناسه">
+      </div>
+}
+      <div>
+            <input [disabled]="state=='remove'" [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
       </div>
       <div>
-            <input [(ngModel)]="item.title" id="title" name="title" type="text" placeholder="عنوان">
+            <input [disabled]="state=='remove'" [(ngModel)]="item.writer" id="writer" name="writer" type="text" placeholder="نویسنده">
       </div>
       <div>
-            <input [(ngModel)]="item.writer" id="writer" name="writer" type="text" placeholder="نویسنده">
+            <input [disabled]="state=='remove'" [(ngModel)]="item.publisher" id="publisher" name="publisher" type="text" placeholder="ناشر">
       </div>
       <div>
-            <input [(ngModel)]="item.publisher" id="publisher" name="publisher" type="text" placeholder="ناشر">
-      </div>
-      <div>
-            <input [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
+            <input [disabled]="state=='remove'" [(ngModel)]="item.price" id="price" name="price" type="number" placeholder="قیمت">
       </div>
       <div>
             <button class="primary" type="submit">تایید</button>
